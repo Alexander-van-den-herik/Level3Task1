@@ -25,6 +25,12 @@ class RatingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        summary_btn.setOnClickListener {
+            navigateToSummary()
+        }
+
+        showRandomAssessableGame()
     }
 
     private fun showRandomAssessableGame() {
@@ -32,5 +38,15 @@ class RatingFragment : Fragment() {
             "Shadow of the Tombraider", "the legend of zelda breath of the wild", "mario maker 2" ).random()
 
         tv_game_name.text = randomGame
+    }
+
+
+    private fun navigateToSummary() {
+
+        val args = Bundle()
+        args.putFloat(ARG_GAME_RATING, rating_bar.rating)
+        args.putString(ARG_GAME_NAME, tv_game_name.text.toString())
+
+        findNavController().navigate(R.id.action_ratingFragment_to_summaryFragment, args)
     }
 }
