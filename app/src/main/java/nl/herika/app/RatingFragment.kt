@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_rating.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -24,8 +25,12 @@ class RatingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_second).setOnClickListener {
-            findNavController().navigate(R.id.action_startFragment_to_ratingFragment)
-        }
+    }
+
+    private fun showRandomAssessableGame() {
+        val randomGame = listOf("Red Dead Redemption 2", "Rocket League",
+            "Shadow of the Tombraider", "the legend of zelda breath of the wild", "mario maker 2" ).random()
+
+        tv_game_name.text = randomGame
     }
 }
